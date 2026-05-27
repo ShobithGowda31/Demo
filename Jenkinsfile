@@ -1,24 +1,43 @@
 pipeline {
+
     agent any
 
     stages {
 
+        // BUILD STAGE
         stage('Build') {
             steps {
-                echo 'building the application...'
+                echo 'Building Application'
             }
         }
 
+        // TEST STAGE
         stage('Test') {
             steps {
-                echo 'testing the application...'
+                echo 'Running Test Cases'
             }
         }
 
+        // DEPLOY STAGE
         stage('Deploy') {
             steps {
-                echo 'deploying the application...'
+                echo 'Deploying Application'
             }
+        }
+    }
+
+    post {
+
+        success {
+            echo 'Pipeline Success'
+        }
+
+        failure {
+            echo 'Pipeline Failed'
+        }
+
+        always {
+            echo 'Pipeline Completed'
         }
     }
 }
